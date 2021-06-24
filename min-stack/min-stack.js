@@ -12,13 +12,21 @@ var MinStack = function() {
  */
 MinStack.prototype.push = function(val) {
   this.stack.push(val);
+  
+  if (this.minStack.length === 0 || this.minStack[this.minStack.length - 1] >= val) {
+    this.minStack.push(val);
+  }
 };
 
 /**
  * @return {void}
  */
 MinStack.prototype.pop = function() {
-  this.stack.pop();
+  const pop = this.stack.pop();
+  
+  if (this.minStack[this.minStack.length - 1] === pop) {
+    this.minStack.pop();
+  }
 };
 
 /**
@@ -32,7 +40,7 @@ MinStack.prototype.top = function() {
  * @return {number}
  */
 MinStack.prototype.getMin = function() {
-  return Math.min(...this.stack);
+  return this.minStack[this.minStack.length - 1];
 };
 
 /** 
