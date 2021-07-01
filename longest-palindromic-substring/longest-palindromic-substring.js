@@ -22,6 +22,7 @@ var longestPalindrome = function(s) {
   for (let i = 0; i <= s.length; i += 1) {
     for (let j = i + 1; j <= s.length; j += 1) {
       const str = s.slice(i, j);
+      
       if (isPalindrome(str)) {
         if (j - i > max) {
           result = str;
